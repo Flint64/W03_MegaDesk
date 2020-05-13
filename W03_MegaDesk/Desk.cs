@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +16,7 @@ namespace W03_MegaDesk {
         public RushOption RushOption { get; set; }
     }
 
-    public enum SurfaceMaterial {
+public enum SurfaceMaterial {
         Oak,
         Laminate,
         Pine,
@@ -22,10 +24,22 @@ namespace W03_MegaDesk {
         Veneer
     }
 
+
     public enum RushOption {
         none,
         day_3,
         day_5,
         day_7
+    }
+
+    public enum NumDrawers {
+        Zero,
+        One,
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven
     }
 }

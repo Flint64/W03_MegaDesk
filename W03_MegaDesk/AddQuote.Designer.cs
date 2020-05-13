@@ -67,15 +67,6 @@
             // cmbo_drawers
             // 
             this.cmbo_drawers.FormattingEnabled = true;
-            this.cmbo_drawers.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"});
             this.cmbo_drawers.Location = new System.Drawing.Point(24, 111);
             this.cmbo_drawers.Name = "cmbo_drawers";
             this.cmbo_drawers.Size = new System.Drawing.Size(121, 24);
@@ -140,12 +131,6 @@
             // cmbo_surfaceMaterial
             // 
             this.cmbo_surfaceMaterial.FormattingEnabled = true;
-            this.cmbo_surfaceMaterial.Items.AddRange(new object[] {
-            "Oak",
-            "Laminate",
-            "Pine",
-            "Rosewood",
-            "Veneer"});
             this.cmbo_surfaceMaterial.Location = new System.Drawing.Point(24, 52);
             this.cmbo_surfaceMaterial.Name = "cmbo_surfaceMaterial";
             this.cmbo_surfaceMaterial.Size = new System.Drawing.Size(121, 24);
@@ -164,11 +149,6 @@
             // cmbo_rushOptions
             // 
             this.cmbo_rushOptions.FormattingEnabled = true;
-            this.cmbo_rushOptions.Items.AddRange(new object[] {
-            "None - Free",
-            "3 day shipping",
-            "5 day shipping",
-            "7 day shipping"});
             this.cmbo_rushOptions.Location = new System.Drawing.Point(101, 39);
             this.cmbo_rushOptions.Name = "cmbo_rushOptions";
             this.cmbo_rushOptions.Size = new System.Drawing.Size(121, 24);
