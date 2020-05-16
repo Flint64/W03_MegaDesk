@@ -13,7 +13,6 @@ namespace W03_MegaDesk {
 
         private Form _mainMenu;
 
-
         private const decimal MinWidth = 24;
         private const decimal MaxWidth = 96;
 
@@ -61,6 +60,10 @@ namespace W03_MegaDesk {
             } else if (num_depth.Value > MaxDepth) {
                 num_depth.Value = MaxDepth;
             }
+        }
+
+        private void btn_getQuote_Click(object sender, EventArgs e) {
+            DeskQuote deskQuote = new DeskQuote();
         }
     }
 }

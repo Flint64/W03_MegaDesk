@@ -40,11 +40,16 @@
             this.grp_shipping = new System.Windows.Forms.GroupBox();
             this.btn_getQuote = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_saveQuote = new System.Windows.Forms.Button();
+            this.grp_quote = new System.Windows.Forms.GroupBox();
+            this.lbl_deskQuote = new System.Windows.Forms.Label();
+            this.lbl_dollarSign = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.num_width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_depth)).BeginInit();
             this.grp_size.SuspendLayout();
             this.grp_features.SuspendLayout();
             this.grp_shipping.SuspendLayout();
+            this.grp_quote.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_name
@@ -200,17 +205,18 @@
             // btn_getQuote
             // 
             this.btn_getQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_getQuote.Location = new System.Drawing.Point(80, 316);
+            this.btn_getQuote.Location = new System.Drawing.Point(107, 376);
             this.btn_getQuote.Name = "btn_getQuote";
             this.btn_getQuote.Size = new System.Drawing.Size(108, 34);
             this.btn_getQuote.TabIndex = 16;
             this.btn_getQuote.Text = "Get Quote";
             this.btn_getQuote.UseVisualStyleBackColor = true;
+            this.btn_getQuote.Click += new System.EventHandler(this.btn_getQuote_Click);
             // 
             // btn_cancel
             // 
             this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.Location = new System.Drawing.Point(217, 316);
+            this.btn_cancel.Location = new System.Drawing.Point(171, 416);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(108, 34);
             this.btn_cancel.TabIndex = 17;
@@ -218,11 +224,53 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
+            // btn_saveQuote
+            // 
+            this.btn_saveQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_saveQuote.Location = new System.Drawing.Point(233, 376);
+            this.btn_saveQuote.Name = "btn_saveQuote";
+            this.btn_saveQuote.Size = new System.Drawing.Size(108, 34);
+            this.btn_saveQuote.TabIndex = 18;
+            this.btn_saveQuote.Text = "Save Quote";
+            this.btn_saveQuote.UseVisualStyleBackColor = true;
+            // 
+            // grp_quote
+            // 
+            this.grp_quote.Controls.Add(this.lbl_dollarSign);
+            this.grp_quote.Controls.Add(this.lbl_deskQuote);
+            this.grp_quote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_quote.Location = new System.Drawing.Point(145, 304);
+            this.grp_quote.Name = "grp_quote";
+            this.grp_quote.Size = new System.Drawing.Size(150, 62);
+            this.grp_quote.TabIndex = 19;
+            this.grp_quote.TabStop = false;
+            this.grp_quote.Text = "Desk Price";
+            // 
+            // lbl_deskQuote
+            // 
+            this.lbl_deskQuote.AutoSize = true;
+            this.lbl_deskQuote.Location = new System.Drawing.Point(67, 29);
+            this.lbl_deskQuote.Name = "lbl_deskQuote";
+            this.lbl_deskQuote.Size = new System.Drawing.Size(36, 17);
+            this.lbl_deskQuote.TabIndex = 0;
+            this.lbl_deskQuote.Text = "0.00";
+            // 
+            // lbl_dollarSign
+            // 
+            this.lbl_dollarSign.AutoSize = true;
+            this.lbl_dollarSign.Location = new System.Drawing.Point(51, 29);
+            this.lbl_dollarSign.Name = "lbl_dollarSign";
+            this.lbl_dollarSign.Size = new System.Drawing.Size(16, 17);
+            this.lbl_dollarSign.TabIndex = 1;
+            this.lbl_dollarSign.Text = "$";
+            // 
             // AddQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 373);
+            this.ClientSize = new System.Drawing.Size(428, 464);
+            this.Controls.Add(this.grp_quote);
+            this.Controls.Add(this.btn_saveQuote);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_getQuote);
             this.Controls.Add(this.grp_shipping);
@@ -241,6 +289,8 @@
             this.grp_features.PerformLayout();
             this.grp_shipping.ResumeLayout(false);
             this.grp_shipping.PerformLayout();
+            this.grp_quote.ResumeLayout(false);
+            this.grp_quote.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +315,9 @@
         private System.Windows.Forms.GroupBox grp_shipping;
         private System.Windows.Forms.Button btn_getQuote;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Button btn_saveQuote;
+        private System.Windows.Forms.GroupBox grp_quote;
+        private System.Windows.Forms.Label lbl_dollarSign;
+        private System.Windows.Forms.Label lbl_deskQuote;
     }
 }

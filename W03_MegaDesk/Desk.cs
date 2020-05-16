@@ -11,7 +11,7 @@ namespace W03_MegaDesk {
         public short Depth { get; set; }
         public short Width { get; set; }
         public short SurfaceArea { get; set; }
-        public short NumberOfDrawers { get; set; }
+        public NumDrawers NumberOfDrawers { get; set; }
         public SurfaceMaterial SurfaceMaterial { get; set; }
         public RushOption RushOption { get; set; }
     }
