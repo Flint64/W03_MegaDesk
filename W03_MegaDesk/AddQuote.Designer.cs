@@ -42,8 +42,8 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_saveQuote = new System.Windows.Forms.Button();
             this.grp_quote = new System.Windows.Forms.GroupBox();
-            this.lbl_deskQuote = new System.Windows.Forms.Label();
             this.lbl_dollarSign = new System.Windows.Forms.Label();
+            this.lbl_deskQuote = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.num_width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_depth)).BeginInit();
             this.grp_size.SuspendLayout();
@@ -233,6 +233,7 @@
             this.btn_saveQuote.TabIndex = 18;
             this.btn_saveQuote.Text = "Save Quote";
             this.btn_saveQuote.UseVisualStyleBackColor = true;
+            this.btn_saveQuote.Click += new System.EventHandler(this.btn_saveQuote_Click);
             // 
             // grp_quote
             // 
@@ -246,15 +247,6 @@
             this.grp_quote.TabStop = false;
             this.grp_quote.Text = "Desk Price";
             // 
-            // lbl_deskQuote
-            // 
-            this.lbl_deskQuote.AutoSize = true;
-            this.lbl_deskQuote.Location = new System.Drawing.Point(67, 29);
-            this.lbl_deskQuote.Name = "lbl_deskQuote";
-            this.lbl_deskQuote.Size = new System.Drawing.Size(36, 17);
-            this.lbl_deskQuote.TabIndex = 0;
-            this.lbl_deskQuote.Text = "0.00";
-            // 
             // lbl_dollarSign
             // 
             this.lbl_dollarSign.AutoSize = true;
@@ -263,6 +255,15 @@
             this.lbl_dollarSign.Size = new System.Drawing.Size(16, 17);
             this.lbl_dollarSign.TabIndex = 1;
             this.lbl_dollarSign.Text = "$";
+            // 
+            // lbl_deskQuote
+            // 
+            this.lbl_deskQuote.AutoSize = true;
+            this.lbl_deskQuote.Location = new System.Drawing.Point(67, 29);
+            this.lbl_deskQuote.Name = "lbl_deskQuote";
+            this.lbl_deskQuote.Size = new System.Drawing.Size(36, 17);
+            this.lbl_deskQuote.TabIndex = 0;
+            this.lbl_deskQuote.Text = "0.00";
             // 
             // AddQuote
             // 

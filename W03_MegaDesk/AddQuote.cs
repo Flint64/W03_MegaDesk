@@ -63,7 +63,43 @@ namespace W03_MegaDesk {
         }
 
         private void btn_getQuote_Click(object sender, EventArgs e) {
+
+            lbl_deskQuote.Text = null;
+
             DeskQuote deskQuote = new DeskQuote();
+            Desk desk = new Desk();
+
+            deskQuote.customerName = txt_name.Text;
+
+            DateTime today = DateTime.Today;
+            deskQuote.currentDate = today;
+
+            //deskQuote.desk.NumberOfDrawers = cmbo_drawers.SelectedValue;
+            //deskQuote.desk.NumberOfDrawers = cmbo_drawers.SelectedItem;
+            //deskQuote.desk.NumberOfDrawers = (NumDrawers)Enum.Parse(typeof(NumDrawers), cmbo_drawers.SelectedItem.ToString());
+            desk.SurfaceMaterial = SurfaceMaterial.Laminate;
+
+            desk.Depth = num_depth.Value;
+            desk.Width = num_width.Value;
+            desk.SurfaceArea = (num_width.Value * num_depth.Value);
+
+            //deskQuote.desk.SurfaceMaterial= (SurfaceMaterial)Enum.Parse(typeof(SurfaceMaterial), cmbo_surfaceMaterial.SelectedItem.ToString());
+            desk.NumberOfDrawers = NumDrawers.Two;
+
+            desk.RushOption= RushOption.day_3;
+
+            deskQuote.desk = desk;
+            decimal quote = deskQuote.getQuote();
+            
+            lbl_deskQuote.Text = quote.ToString();
+
+        }
+
+        /*
+         *
+         * */
+        private void btn_saveQuote_Click(object sender, EventArgs e) {
+
         }
     }
 }

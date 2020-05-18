@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace W03_MegaDesk {
     public class Desk {
-        public short Depth { get; set; }
-        public short Width { get; set; }
-        public short SurfaceArea { get; set; }
+        public decimal Depth { get; set; }
+        public decimal Width { get; set; }
+        public decimal SurfaceArea { get; set; }
         public NumDrawers NumberOfDrawers { get; set; }
         public SurfaceMaterial SurfaceMaterial { get; set; }
         public RushOption RushOption { get; set; }
