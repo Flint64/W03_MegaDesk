@@ -47,7 +47,7 @@ namespace W03_MegaDesk {
                     Width = d.desk.Width,
                     Drawers = d.desk.NumberOfDrawers,
                     SurfaceMaterial = d.desk.SurfaceMaterial,
-                    DeliveryType = d.DeliveryType,
+                    DeliveryType = d.desk.RushOption,
                     QuoteAmount = d.price.ToString("c")
                 }).ToList();
             }

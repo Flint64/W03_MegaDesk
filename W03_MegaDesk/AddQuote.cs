@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,7 +22,8 @@ namespace W03_MegaDesk {
         private const decimal MinDepth = 12;
         private const decimal MaxDepth = 48;
 
-        private Desk desk;
+        private List<DeskQuote> deskQuotes;
+        private DeskQuote deskQuote;
 
         public AddQuote(Form mainMenu) {
             InitializeComponent();
@@ -66,15 +68,20 @@ namespace W03_MegaDesk {
 
         private void btn_getQuote_Click(object sender, EventArgs e) {
 
+            DeskQuote deskQuote = new DeskQuote();
+
+            deskQuote = new DeskQuote();
+
             lbl_deskQuote.Text = null;
 
-            DeskQuote deskQuote = new DeskQuote();
             Desk desk = new Desk();
 
             deskQuote.customerName = txt_name.Text;
 
             DateTime today = DateTime.Today;
             deskQuote.currentDate = today;
+
+            //TODO: Figure out how to set enum from the dropdown
 
             //deskQuote.desk.NumberOfDrawers = cmbo_drawers.SelectedValue;
             //deskQuote.desk.NumberOfDrawers = cmbo_drawers.SelectedItem;
@@ -94,45 +101,42 @@ namespace W03_MegaDesk {
             decimal quote = deskQuote.getQuote();
             
             lbl_deskQuote.Text = quote.ToString();
-
         }
 
-        /*
-         *
-         * */
         private void btn_saveQuote_Click(object sender, EventArgs e) {
-
-        }
-
-        /*Deserialization and Serialization of JSON file. Reads to and from quotes.json*/
-        //Deserializing JSON file.
-        private void AddQuoteToFile(DeskQuote deskQuote)
-        {
-            var quotesFile = @"quotes.json";
-            List<DeskQuote> deskQuotes = new List<DeskQuote>();
-
-            if (File.Exists(quotesFile))
-            {
-                using (StreamReader reader = new StreamReader(quotesFile))
-                {
-                    string quotes = reader.ReadToEnd();
-                    if(quotes.Length > 0)
-                    {
-                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
-
-                    }
-                }
-            }
-            //This adds a new quote
-            deskQuotes.Add(deskQuote);
+            //btn_getQuote_Click();
+            //AddQuoteToFile()
 
             //Save the new quote to the file
             SaveQuotes(deskQuotes);
         }
 
+        /*Deserialization and Serialization of JSON file. Reads to and from quotes.json*/
+        //Deserializing JSON file.
+        private void AddQuoteToFile(DeskQuote deskQuote) {
+            var quotesFile = @"quotes.json";
+            //List<DeskQuote> deskQuotes = new List<DeskQuote>();
+
+            if (File.Exists(quotesFile)) {
+
+                using (StreamReader reader = new StreamReader(quotesFile)) {
+
+                    string quotes = reader.ReadToEnd();
+                    if(quotes.Length > 0) {
+                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                    }
+                }
+            }
+        }
+
         //This serializes the new quote to the file
-        private void SaveQuotes(List<DeskQuote> quotes)
-        {
+        private void SaveQuotes(List<DeskQuote> quotes){
+
+            //This adds a new quote
+
+            //TODO: Figure out how to get the deskQuote property to not be null for some reason
+            deskQuotes.Add(deskQuote);
+
             var quotesFile = @"quotes.json";
 
             var serializedQuotes = JsonConvert.SerializeObject(quotes);
@@ -141,4 +145,6 @@ namespace W03_MegaDesk {
             File.WriteAllText(quotesFile, serializedQuotes);
         }
     }
+
+
 }

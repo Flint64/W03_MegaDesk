@@ -19,11 +19,13 @@ namespace W03_MegaDesk {
 
         decimal[,] rushPrices = new decimal[3, 3];
 
+        public decimal price { get; set; }
+
 
         public decimal getQuote() {
 
             //Desk base price
-            decimal price = 200;
+            price = 200;
 
             //If surface area is over 1000, charge for every inch over 1000
             if (desk.SurfaceArea > 1000) {
