@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace W03_MegaDesk {
     public partial class AddQuote : Form {
@@ -100,6 +102,43 @@ namespace W03_MegaDesk {
          * */
         private void btn_saveQuote_Click(object sender, EventArgs e) {
 
+        }
+
+        /*Deserialization and Serialization of JSON file. Reads to and from quotes.json*/
+        //Deserializing JSON file.
+        private void AddQuoteToFile(DeskQuote deskQuote)
+        {
+            var quotesFile = @"quotes.json";
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+
+            if (File.Exists(quotesFile))
+            {
+                using (StreamReader reader = new StreamReader(quotesFile))
+                {
+                    string quotes = reader.ReadToEnd();
+                    if(quotes.Length > 0)
+                    {
+                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                    }
+                }
+            }
+            //This adds a new quote
+            deskQuotes.Add(deskQuote);
+
+            //Save the new quote to the file
+            SaveQuotes(deskQuotes);
+        }
+
+        //This serializes the new quote to the file
+        private void SaveQuotes(List<DeskQuote> quotes)
+        {
+            var quotesFile = @"quotes.json";
+
+            var serializedQuotes = JsonConvert.SerializeObject(quotes);
+            
+            //Write the quotes to the Json file
+            File.WriteAllText(quotesFile, serializedQuotes);
         }
     }
 }

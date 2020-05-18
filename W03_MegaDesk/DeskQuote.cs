@@ -10,14 +10,17 @@ using System.IO;
 namespace W03_MegaDesk {
     class DeskQuote {
 
-        public DateTime currentDate;
-        public string customerName;
-        public Desk desk;
+        //D.W
+        public DateTime currentDate { get; set; }
+        //D.W
+        public string customerName { get; set; }
+        //D.W
+        public Desk desk { get; set; }
 
         decimal[,] rushPrices = new decimal[3, 3];
 
-        public decimal getQuote() {
 
+        public decimal getQuote() {
 
             //Desk base price
             decimal price = 200;
