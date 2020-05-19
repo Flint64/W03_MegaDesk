@@ -22,8 +22,8 @@ namespace W03_MegaDesk {
         private const decimal MinDepth = 12;
         private const decimal MaxDepth = 48;
 
-        private List<DeskQuote> deskQuotes;
-        private DeskQuote deskQuote;
+        private List<DeskQuote> _deskQuotes;
+        private DeskQuote _deskQuote;
 
         public AddQuote(Form mainMenu) {
             InitializeComponent();
@@ -68,25 +68,19 @@ namespace W03_MegaDesk {
 
         private void btn_getQuote_Click(object sender, EventArgs e) {
 
-            DeskQuote deskQuote = new DeskQuote();
-
-            deskQuote = new DeskQuote();
+            _deskQuote = new DeskQuote();
 
             lbl_deskQuote.Text = null;
 
             Desk desk = new Desk();
 
-            deskQuote.customerName = txt_name.Text;
-
+            _deskQuote.customerName = txt_name.Text;
+            
             DateTime today = DateTime.Today;
-            deskQuote.currentDate = today;
+            _deskQuote.currentDate = today;
 
             //TODO: Figure out how to set enum from the dropdown
-
-            //deskQuote.desk.NumberOfDrawers = cmbo_drawers.SelectedValue;
-            //deskQuote.desk.NumberOfDrawers = cmbo_drawers.SelectedItem;
-            //deskQuote.desk.NumberOfDrawers = (NumDrawers)Enum.Parse(typeof(NumDrawers), cmbo_drawers.SelectedItem.ToString());
-            desk.SurfaceMaterial = SurfaceMaterial.Laminate;
+            desk.SurfaceMaterial = (SurfaceMaterial)cmbo_surfaceMaterial.SelectedValue;
 
             desk.Depth = num_depth.Value;
             desk.Width = num_width.Value;
@@ -97,23 +91,24 @@ namespace W03_MegaDesk {
 
             desk.RushOption= RushOption.day_3;
 
-            deskQuote.desk = desk;
-            decimal quote = deskQuote.getQuote();
+            _deskQuote.desk = desk;
+            decimal quote = _deskQuote.getQuote();
             
             lbl_deskQuote.Text = quote.ToString();
         }
 
         private void btn_saveQuote_Click(object sender, EventArgs e) {
-            //btn_getQuote_Click();
-            //AddQuoteToFile()
-
             //Save the new quote to the file
-            SaveQuotes(deskQuotes);
+            populateList();
+            SaveQuotes();
         }
 
         /*Deserialization and Serialization of JSON file. Reads to and from quotes.json*/
         //Deserializing JSON file.
-        private void AddQuoteToFile(DeskQuote deskQuote) {
+        private void populateList() {
+
+            _deskQuotes = new List<DeskQuote>();
+
             var quotesFile = @"quotes.json";
             //List<DeskQuote> deskQuotes = new List<DeskQuote>();
 
@@ -123,23 +118,25 @@ namespace W03_MegaDesk {
 
                     string quotes = reader.ReadToEnd();
                     if(quotes.Length > 0) {
-                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                        _deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
                     }
                 }
             }
         }
 
         //This serializes the new quote to the file
-        private void SaveQuotes(List<DeskQuote> quotes){
+        private void SaveQuotes(){
+
+            if (_deskQuote == null) {
+                return;
+            }
 
             //This adds a new quote
-
-            //TODO: Figure out how to get the deskQuote property to not be null for some reason
-            deskQuotes.Add(deskQuote);
+            _deskQuotes.Add(_deskQuote);
 
             var quotesFile = @"quotes.json";
 
-            var serializedQuotes = JsonConvert.SerializeObject(quotes);
+            var serializedQuotes = JsonConvert.SerializeObject(_deskQuotes);
             
             //Write the quotes to the Json file
             File.WriteAllText(quotesFile, serializedQuotes);
