@@ -79,17 +79,15 @@ namespace W03_MegaDesk {
             DateTime today = DateTime.Today;
             _deskQuote.currentDate = today;
 
-            //TODO: Figure out how to set enum from the dropdown
             desk.SurfaceMaterial = (SurfaceMaterial)cmbo_surfaceMaterial.SelectedValue;
 
             desk.Depth = num_depth.Value;
             desk.Width = num_width.Value;
             desk.SurfaceArea = (num_width.Value * num_depth.Value);
 
-            //deskQuote.desk.SurfaceMaterial= (SurfaceMaterial)Enum.Parse(typeof(SurfaceMaterial), cmbo_surfaceMaterial.SelectedItem.ToString());
-            desk.NumberOfDrawers = NumDrawers.Two;
+            desk.NumberOfDrawers = (NumDrawers)cmbo_drawers.SelectedValue;
 
-            desk.RushOption= RushOption.day_3;
+            desk.RushOption = (RushOption)cmbo_rushOptions.SelectedValue;
 
             _deskQuote.desk = desk;
             decimal quote = _deskQuote.getQuote();
